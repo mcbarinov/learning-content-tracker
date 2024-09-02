@@ -12,8 +12,6 @@ class App(BaseApp):
         self.db: DB = DB(self.database)
         self.main_service = MainService(self.base_params)
 
-        self.scheduler.add_job(self.main_service.generate_data, 600)
-
         self.startup()
 
     @property

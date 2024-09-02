@@ -13,9 +13,9 @@ def init(app: App, templates: Templates) -> APIRouter:
     def index_page(req: Request):
         return templates.render(req, "index.j2")
 
-    @router.get("/data", response_class=HTMLResponse)
-    def data_page(req: Request):
-        data = app.db.data.find({}, "-created_at", 100)
-        return templates.render(req, "data.j2", {"data": data})
+    @router.get("/contents", response_class=HTMLResponse)
+    def contents_page(req: Request):
+        contents = app.db.content.find({})
+        return templates.render(req, "contents.j2", {"contents": contents})
 
     return router

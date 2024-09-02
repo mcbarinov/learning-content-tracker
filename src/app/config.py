@@ -15,11 +15,7 @@ def _get_version() -> str:
 class AppConfig(BaseAppConfig):
     app_version: str = _get_version()
     tags: list[str] = ["main"]
-    main_menu: dict[str, str] = {"/data": "data"}
-    telegram_bot_help: str = """
-/first_command - bla bla1
-/second_command - bla bla2
-"""
+    main_menu: dict[str, str] = {"/contents": "contents"}
 
 
 class DConfigSettings(DConfigStorage):
