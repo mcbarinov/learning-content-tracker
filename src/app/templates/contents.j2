@@ -1,10 +1,30 @@
 {% extends "inc/base.j2" %}
 {% block content %}
   <div class="menu">
-    <h3>Content</h3>
+    <h3>Learning Content</h3>
   </div>
   <br>
 
+
+  {% for c in contents %}
+
+    <section>
+      <h4>{{ c.title }}</h4>
+      <a href="{{ c.link }}">{{ c.link }}</a><br>
+
+      {% for tag in c.content_tags %}
+        <b>{{ tag }}</b>
+      {% endfor %}<br>
+
+      {% for tag in c.system_tags %}
+        <b>{{ tag }}</b>
+      {% endfor %}
+
+
+      <hr>
+    </section>
+
+  {% endfor %}
 
 
 {% endblock %}

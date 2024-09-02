@@ -27,7 +27,7 @@ def init(app: App, templates: Templates) -> APIRouter:
 
     @router.get("/contents", response_class=HTMLResponse)
     def contents_page(req: Request):
-        contents = app.db.content.find({})
+        contents = app.db.content.find({}, "-created_at")
         return templates.render(req, "contents.j2", {"contents": contents})
 
     @router.get("/add", response_class=HTMLResponse)
