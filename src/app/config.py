@@ -15,7 +15,7 @@ def _get_version() -> str:
 class AppConfig(BaseAppConfig):
     app_version: str = _get_version()
     tags: list[str] = ["main"]
-    main_menu: dict[str, str] = {"/contents": "contents"}
+    main_menu: dict[str, str] = {"/add": "add", "/contents": "contents"}
 
 
 class DConfigSettings(DConfigStorage):
