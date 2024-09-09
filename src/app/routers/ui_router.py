@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from mm_base1.jinja import Templates
 from mm_base1.utils import depends_form
+from mm_std import utc_now
 from starlette.datastructures import FormData
 from starlette.requests import Request
 from starlette.responses import HTMLResponse
@@ -46,5 +47,10 @@ def init(app: App, templates: Templates) -> APIRouter:
         )
 
         return new_content
+
+    @router.get("/finish/{pk}")
+    def finish_content(pk: str):
+        app.db.content.set_by_id(pk, {"finished_at": utc_now()})
+        return {"status": "ok"}
 
     return router

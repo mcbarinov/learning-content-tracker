@@ -12,7 +12,7 @@ from pydantic import Field
 class SystemTag(str, Enum):
     VIDEO = "video"
     BOOK = "book"
-    IN_PROCESS = "in_process"
+    DOCUMENTATION = "documentation"
     LIKE = "like"
     SKIP = "skip"
 

@@ -11,10 +11,9 @@ clean:
 
 sync:
     uv sync
-    uv pip install -e .
 
 build: clean lint audit test
-    uvx --from build pyproject-build --installer uv
+    uv build --wheel
 
 format:
     uv run ruff check --select I --fix src tests
@@ -32,9 +31,9 @@ test:
     uv run pytest tests
 
 docker-lint:
-    hadolint --ignore DL3008 docker/Dockerfile
+    hadolint docker/Dockerfile
 
-docker-build: build docker-lint
+docker-build:
 	docker build --platform linux/amd64 -t {{project_name}}:{{version}} --file docker/Dockerfile .
 	docker tag {{project_name}}:{{version}} {{project_name}}:latest
 

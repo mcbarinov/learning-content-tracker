@@ -8,7 +8,7 @@
 
   {% for c in contents %}
 
-    <section>
+    <section class="container">
       <h4>{{ c.title }}</h4>
       <a href="{{ c.link }}">{{ c.link }}</a><br>
 
@@ -20,6 +20,12 @@
         <b>{{ tag }}</b>
       {% endfor %}
 
+
+      {% if c.finished_at %}
+        finished_at: {{ c.finished_at | dt }}
+      {% else %}
+        <a href="/finish/{{ c.id }}">finish</a>
+      {% endif %}
 
       <hr>
     </section>
